@@ -49,7 +49,6 @@ extension ReviewDTO {
     let day = 86400
     let hour = day / 24
     let minute = hour / 60
-    
     let dateDifferenceInSecond = Int(Date().timeIntervalSince(updatedDate.toDate())) //Date 차이
     
     switch dateDifferenceInSecond {

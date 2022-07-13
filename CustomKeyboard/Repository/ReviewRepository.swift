@@ -28,6 +28,7 @@ final class ReviewRepository {
         })
         completion(.success(reviews))
       case .failure(let error):
+        completion(.failure(error))
         print(error)
       }
     }
@@ -40,18 +41,29 @@ final class ReviewRepository {
     }
     
     let URLRequest = URLRequest(url: url)
-    network.request(on: URLRequest) { result in
+    network.request(on: URLRequest) {[weak self] result in
       switch result{
       case .success(let data):
         completion(.success(data))
+        self?.imageCache.setObject(data as NSData, forKey: url as NSURL)
       case .failure(let error):
+        completion(.failure(error))
         print(error)
       }
     }
   }
   
-  func postReviews(endPoint: EndPoint, body: Decodable, completion: @escaping (Bool) -> Void) {
-
+  func postReview(endPoint: EndPoint, body: Comment, completion: @escaping (Result<Bool,Error>) -> Void) {
+    guard let commentData = Encoder<Comment>().encode(model: body) else {return}
+    let URLRequest = URLRequest.makeURLRequest(request: Requset(requestType: .post, body: commentData, endPoint: endPoint))
+    network.request(on: URLRequest) { result in
+      switch result {
+      case .success(_):
+        completion(.success(true))
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
     
     
     
