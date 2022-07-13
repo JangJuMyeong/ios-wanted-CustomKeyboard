@@ -22,21 +22,25 @@ class ReviewTextFieldView: UIView {
         let textField = UITextField()
         textField.layer.cornerRadius = 20
         textField.placeholder = "이 테마가 마음에 드시나요?"
-        textField.placeholderRect(forBounds: CGRect(x: 0, y: 0, width: 30, height: 30))
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.textColor = .black
         textField.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        
         textField.addLeftPadding()
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
+    
+    
+    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(userProfileImageView)
         addSubview(reviewTextField)
+        
+        reviewTextField.delegate = self
         
         NSLayoutConstraint.activate([
             userProfileImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
@@ -58,6 +62,18 @@ class ReviewTextFieldView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+extension ReviewTextFieldView : UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension UITextField {
