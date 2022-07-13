@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
         return tableView
     }()
     
-    private let reviewTextFile : ReviewTextFieldView = {
+    private let reviewTextField : ReviewTextFieldView = {
         let view = ReviewTextFieldView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -36,18 +36,18 @@ class HomeViewController: UIViewController {
     private func setConstraints() {
         
         view.addSubview(reviewTableView)
-        view.addSubview(reviewTextFile)
+        view.addSubview(reviewTextField)
         
         NSLayoutConstraint.activate([
-            reviewTextFile.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            reviewTextFile.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            reviewTextFile.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            reviewTextFile.bottomAnchor.constraint(equalTo: reviewTableView.topAnchor),
-            reviewTextFile.heightAnchor.constraint(equalToConstant: 80)
+            reviewTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            reviewTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            reviewTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            reviewTextField.bottomAnchor.constraint(equalTo: reviewTableView.topAnchor),
+            reviewTextField.heightAnchor.constraint(equalToConstant: 80)
         ])
         
         NSLayoutConstraint.activate([
-            reviewTableView.topAnchor.constraint(equalTo: reviewTextFile.bottomAnchor),
+            reviewTableView.topAnchor.constraint(equalTo: reviewTextField.bottomAnchor),
             reviewTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             reviewTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             reviewTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
