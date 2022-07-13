@@ -68,10 +68,10 @@
 			children = (
 				B779BBC5287D4B5300BB8DF5 /* ReviewDTO.swift */,
 				B779BBC6287D4B5300BB8DF5 /* NetworkService.swift */,
+				B779BBCC287D4B5300BB8DF5 /* EndPoint.swift */,
 				B779BBC7287D4B5300BB8DF5 /* Request.swift */,
 				B779BBC8287D4B5300BB8DF5 /* NetworkError.swift */,
 				B779BBC9287D4B5300BB8DF5 /* protocols */,
-				B779BBCC287D4B5300BB8DF5 /* EndPoint.swift */,
 			);
 			path = "Network ";
 			sourceTree = "<group>";
